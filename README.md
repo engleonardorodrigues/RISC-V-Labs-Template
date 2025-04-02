@@ -51,7 +51,7 @@ You can build and run any lab using the top-level Makefile. For example, to buil
 
 ```bash
 make LAB=lab01       # Builds lab01
-make LAB=lab01 run   # Builds and runs lab01 using QEMU
+make LAB=lab01 run   # Runs lab01 using QEMU
 ```
 
 The Makefile is configured to output its compiled artifacts to the corresponding subdirectory in `build/`. To remove build artifacts for a specific lab, run:
