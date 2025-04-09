@@ -31,6 +31,14 @@ RISCV-LABS/
 
 ## Usage
 
+First need to install some packages in Linux terminal:
+
+    sudo apt update 
+
+    sudo apt install gcc-riscv64-linux-gnu -y 
+
+    sudo apt install qemu-kvm qemu-system-misc u-boot-qemu qemu-user 
+
 ### Creating a New Lab
 
 From the project root, run:
@@ -61,3 +69,11 @@ make LAB=lab01 clean
 ```
 
 This command deletes the `build/lab01/` directory.
+
+### RISC-V links for studies
+
+- **WikiChip** https://en.wikichip.org/wiki/risc-v/registers
+
+- **RISC-V Assembler Cheat Sheet** https://projectf.io/posts/riscv-cheat-sheet/
+
+- **RISC-V Web Simulator** https://riscv.vercel.app
