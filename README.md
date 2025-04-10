@@ -31,7 +31,7 @@ RISCV-LABS/
 
 ## Usage
 
-First need to install some packages in Linux terminal:
+First, we need install some packages in Linux terminal:
 
     sudo apt update 
 
