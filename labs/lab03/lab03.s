@@ -11,8 +11,8 @@
 
 bin_to_dec:
     
-    li  t0, 0b1101
-    #lw  t0, 0(a0)        # Carrega t0 com número binario ex: 10101
+    li  t0, 0b1011
+    #lw  t0, 0(a0)       # Carrega t0 com número binario ex: 10101
     li  t1, 0x01         # mascára
     li  t4, 0
     li  t6, 2 
@@ -28,10 +28,11 @@ bit_zero:
 
 bit_um:
 
-    mul  t3, t2, t6       # multiplica o bit por 2
-    add  t4, t4, t3       # soma o valor de t3 a t4 armazenando em t4
-    slli t0, t0, 1        # desloca em um bit para a direita: t5 = t0 >> t1 (0x01)
-    beq  t4, t0, finish
+    addi t5, t5, 1
+    mul  t3, t6, t5       # multiplica o bit por 2
+    add  t4, t4, t3      # soma o valor de t3 a t4 armazenando em t4
+    srli t0, t0,  1      # desloca em um bit para a direita: t5 = t0 >> t1 (0x01)
+    beqz t0, finish
     j    loop
 
 finish:
