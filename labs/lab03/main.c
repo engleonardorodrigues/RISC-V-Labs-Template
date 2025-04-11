@@ -4,9 +4,9 @@ extern void bin_to_dec(int* binary, int* decimal);
 
 int main(){
 
-    int binary = 0x1010101, decimal;
+    int binary = 0b1011, decimal;
 
-    sum(&binary, &decimal);
+    bin_to_dec(&binary, &decimal);
 
     printf("The binary number %d in decimal is: %d\n", binary, decimal);
 
