@@ -4,7 +4,7 @@
 
 count:
    
-    lw t0, 0(a0)          # Carrega 13 
+    lw t0, 0(a0)          
 
 loop:
     andi t1, t0, 1          
