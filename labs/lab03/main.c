@@ -12,7 +12,8 @@ void int_to_binary(int num, char *buffer, int size) {
 extern void bin_to_dec(int* binary, int* decimal);
 
 int main(){
-    int binary = 0b1011, decimal;
+
+    int binary = 0b10101101, decimal;
     char binStr[33];  // 32 bits + '\0'
 
     bin_to_dec(&binary, &decimal);

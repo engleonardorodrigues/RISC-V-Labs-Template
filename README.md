@@ -29,7 +29,7 @@ RISCV-LABS/
 - **Automation**: Use the `scripts/create_lab.sh` script to quickly generate a new lab directory complete.
 - **Top-Level Makefile**: Easily build, run, or clean a specific lab by passing a parameter (e.g., `make lab=lab01`).
 
-## Usage
+## First Steps
 
 First, we need install some packages in Linux terminal:
 
@@ -38,6 +38,17 @@ First, we need install some packages in Linux terminal:
     sudo apt install gcc-riscv64-linux-gnu -y 
 
     sudo apt install qemu-kvm qemu-system-misc u-boot-qemu qemu-user 
+
+## Install RISC-V Venus Simulator for Debug
+
+To help you debug the simulation, you need to install the extension called RISC-V Venus Simulation.
+
+![RISC-V Vensus Simulator](images/risc_v_venus_simulator.png)
+
+This extension allows you to see the registers and debug your assembly code.
+
+![RISC-V Registers](images/risc-v-register.png)
+
 
 ### Creating a New Lab
 

@@ -1,41 +1,28 @@
-#.section .text
-
-#.global bin_to_dec
-
-
-# 1. Descobrir se o bit é 0 ou 1: t0
-# 2. Se for 1 deve pular para a rotina (bit_um) e fazer:
-#      - multiplicar o bit por 2 e armazenar esse valor em t3
-#      - somar o valor atual com o armazenado
-# 3. Se o bit for 0 pular para a verificação do próximo bit
+.section .text
+.global bin_to_dec
 
 bin_to_dec:
+
+    #li  t0, 0b1101      # Exemplo de número binário
+    lw  t0, 0(a0)        # (Descomente para usar parâmetro de entrada)
+    li  t1, 0x01         # máscara para pegar o bit menos significativo
+    li  t4, 0            # resultado final
+    li  t5, 0            # posição do bit (contador de potência)
     
-    li  t0, 0b1011
-    #lw  t0, 0(a0)       # Carrega t0 com número binario ex: 10101
-    li  t1, 0x01         # mascára
-    li  t4, 0
-    li  t6, 2 
-
 loop:
-    and  t2, t1, t0      # And entre t1 e t0 armazenando o resultado em t2
-    beq  t2, t1, bit_um  # Se o bit for igual a 1 vai para rotina de bit um
-
-bit_zero:
-
-    srli t0, t0, 1       # desloca em um bit para a direita: t5 = t0 >> t1 (0x01)
-    j    loop
+    and  t2, t1, t0      # testa o bit menos significativo
+    beqz t2, next_bit    # se bit == 0, vai direto para próximo bit
 
 bit_um:
+    li  t6, 1            # valor base 1
+    sll t3, t6, t5       # t3 = 1 << t5  (faz 2^posição)
+    add t4, t4, t3       # soma no acumulador
 
-    addi t5, t5, 1
-    mul  t3, t6, t5       # multiplica o bit por 2
-    add  t4, t4, t3      # soma o valor de t3 a t4 armazenando em t4
-    srli t0, t0,  1      # desloca em um bit para a direita: t5 = t0 >> t1 (0x01)
-    beqz t0, finish
-    j    loop
+next_bit:
+    srli t0, t0, 1       # desloca número para pegar o próximo bit
+    addi t5, t5, 1       # avança a posição do bit
+    bnez t0, loop        # se t0 volta para o loop
 
 finish:
-
-    sw t4, 0(a1)          # Armazena o valor de t4 
+    sw t4, 0(a1)         # armazena resultado em memória
     ret
