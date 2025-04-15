@@ -1,36 +1,35 @@
-#.section .text
+.section .text
 
-#.global func
+.global func
 
     .data
-vetor: 
-    .word 1, 5, 7, 16, 2, 8, 3    # declara o vetor de inteiros (cada um ocupa 4 bytes)
-    .text
-    .globl main
+#vetor: 
+#    .word 1, 5, 7, 16, 2, 8, 3    # declara o vetor de inteiros (cada um ocupa 4 bytes)
+#    .text
+#    .globl main
 func:
     
-    #lw t1, 0(a0)      # (Parâmetro de entrada)
-    la t0, vetor
-    li t0, 0         # Posição inicial do array
-    li t3, 7         # Tamanho do array
+    lw t0, 0(a0)       # (Parâmetro de entrada)
+    #la t0, vetor
+    li t3, 0            # Posição inicial do array
+    li t4, 7            # Tamanho do array
 
 for_loop:
-     
-    addi t2, t1, 0   # Se não chegou ao fim pega um elemento do vetor e guarda em t2 para futura comparação
-    addi t0, t0, 4   # avança em 4 bytes para pegar o próximo elemento
-    addi t3, t0, 0   # guarda o próximo elemento em t3
-    beqz t1, finish  # verifica se o loop chegou ao fim (percorreu todo o vetor)
-                     
-comp_elements:       # faz a comparação entre os elementos do vetor
 
-    ble t2, t3, next # verifica se t2 > t3
-                   
-    addi t3, t2, 0   # se t2 > t3 guarda t4
-    j  for_loop                 # se não, passar para o próximo
-next:
+    lw  t1, 0(t0)       # guarda o elemento atual do vetor em t1
+ 
+ max:
+    bge t3, t4, finish  # verifica se chegou ao final do vetor (t3 >= t4)
+    lw  t2, 4(t0)       # guarda o próximo elemento do vetor em t2
 
-    addi t0, t0, 4   # avança em 4 bytes para pegar o próximo elemento
+    addi t0, t0, 4      # avança endereço
+    addi t3, t3, 1      # incrementa a contador
+
+    bge t1, t2, max     # se t1 for maior que t2 vai para max
     j    for_loop
+
 finish:
-    sw  t4, 0(a1)    # salva maior número encontrado
+
+    sw t1, 0(a0)
     ret
+    
