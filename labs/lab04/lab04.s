@@ -12,7 +12,7 @@
 max_number:
     
     mv t0, a0
-    #la t0, vetor           # Habilitar para testar o vetor sem o main.c
+#    la t0, vetor           # Habilitar para testar o vetor sem o main.c
     li t3, 0                # Posição inicial do array
     li t4, 7                # Tamanho do array
 
