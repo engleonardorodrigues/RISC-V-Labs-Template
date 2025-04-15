@@ -18,21 +18,21 @@ max_number:
 
 for_loop:
 
-    lw  t1, 0(t0)           # guarda o elemento atual do vetor em t1
+    lw   t1, 0(t0)           # guarda o elemento atual do vetor em t1
 
  max_loop:
 
-    bge t3, t4, finish      # verifica se chegou ao final do vetor (t3 >= t4)
-    lw  t2, 4(t0)           # guarda o próximo elemento do vetor em t2
+    bge  t3, t4, finish      # verifica se chegou ao final do vetor (t3 >= t4)
+    lw   t2, 4(t0)           # guarda o próximo elemento do vetor em t2
 
     addi t0, t0, 4          # avança endereço
     addi t3, t3, 1          # incrementa a contador
 
-    bge t1, t2, max_loop    # se t1 for maior que t2 vai para max
+    bge  t1, t2, max_loop    # se t1 for maior que t2 vai para max
     j    for_loop
 
 finish:
 
-    sw t1, 0(a1)           # salva o valor de t1 em a1
+    sw   t1, 0(a1)           # salva o valor de t1 em a1
     ret
     
