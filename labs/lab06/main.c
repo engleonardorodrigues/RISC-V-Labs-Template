@@ -17,7 +17,7 @@ int main(){
             print("Push the %d, in the stack\n", arg);
     }
 
-    // Pop in stack
+    // Pop on stack
     for (arg = 0; arg <= 5; arg++){
             stack_func(arg, POP, &result);
             print("Pop the %d, on the stack\n", arg);
