@@ -1,31 +1,20 @@
-#.section .text
+.section .text
 
-#.global stack_func
-
-.data
-    stack_data:     .word 1, 2, 3, 4    # elementos da pilha
-    stack_op:       .word 1             # 1 = Push, 0 = Pop
-    result:         .space 4            # para guardar o resultado de t1
-
-stack: 
-
-    .text
-    .globl main
-
-main:
-
-    la, a0, stack_data  # usado para debugar o asm sem necessidade do main.c
-    la, a1, stack_op    # usado para debugar o asm sem necessidade do main.c
-    la, a2, result      # usado para debugar o asm sem necessidade do main.c
+.global stack_func
 
 stack_func:
-    
-    li t0, 0            # contador do sistema
-    mv t1, a0           # carrega todos os elementos da pilha
-    lw t2, 0(a1)        # carrega função da pilha (Push ou Pop)
-    addi a2, t1, 0    
 
-finish:
-    sw t3, 0(a2)      
+    beqz   a1, PUSH          # verifica se a1 é igual a zero. Se sim vai para PUSH, se não vai para POP
 
-    ret
+POP:
+
+    lw     t0, 0(sp)         # carrega o valor do topo da pilha (sp) para o t0
+    addi   sp, sp, 4         # "sobe" 4 bytes da pilha
+    sw     t0, 0(a2)         # salva o valor armazenado em t0 no argumento a2
+ret                          # retorna para apresentar o resultado
+
+PUSH:
+
+    addi   sp, sp, -4        # "desce" 4bytes para inserir um elemento na pilha
+    sw     a0, 0(sp)         # salva o dado armazenado em sp no argumento a0
+ret                          # retorna para apresentar o resultado

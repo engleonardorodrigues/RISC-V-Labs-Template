@@ -3,28 +3,25 @@
 #define POP  0
 #define PUSH 1
 
-extern void stack_func(int* arg, int* op, int* result);
+extern void stack_func(int data, int op, int* result);
 
 int main(){
     
     // initial condition
     int result = 0;
-    int arg = 0;
+    int data = 5;
 
-    stack_func(arg, PUSH, &result);
-    printf("Push the %d, in the stack\n", arg);
-/*
     // Push in stack
-    for (arg = 0; arg <= 5; arg++){
-            stack_func(arg, PUSH, &result);
-            printf("Push the %d, in the stack\n", arg);
+    for (data = 0; data <= 5; data++){
+            stack_func(data, PUSH, &result);
+            printf("Push the %d, in the stack\n", data);
     }
 
     // Pop on stack
-    for (arg = 0; arg <= 5; arg++){
-            stack_func(arg, POP, &result);
-            printf("Pop the %d, on the stack\n", arg);
+    for (data = 0; data < 5; data++){
+            stack_func(data, POP, &result);
+            printf("Pop the %d, on the stack\n", data);
     }
-*/
+
     return 0;
 }
