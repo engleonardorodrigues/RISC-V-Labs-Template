@@ -5,7 +5,7 @@
 .data
     stack_data:     .word 1, 2, 3, 4    # elementos da pilha
     stack_op:       .word 1             # 1 = Push, 0 = Pop
-#    result:         .space 4            # para guardar o resultado de t1
+    result:         .space 4            # para guardar o resultado de t1
 
 stack: 
 
@@ -20,10 +20,10 @@ main:
 
 stack_func:
     
-    li t0, 0        # contador do sistema
-    mv t1, a0       # carrega todos os elementos da pilha
-    lw t2, 0(a1)    # carrega função da pilha (Push ou Pop)
-    addi a2, a2, 5    
+    li t0, 0            # contador do sistema
+    mv t1, a0           # carrega todos os elementos da pilha
+    lw t2, 0(a1)        # carrega função da pilha (Push ou Pop)
+    addi a2, t1, 0    
 
 finish:
     sw t3, 0(a2)      
