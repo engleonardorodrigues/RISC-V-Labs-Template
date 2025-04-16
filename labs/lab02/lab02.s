@@ -16,7 +16,7 @@ next_bit:
 
     srai a0, a0, 1
     bnez a0, loop      
-    # j    loop            
+               
 end:
     sw t1, 0(a1)
     ret              
