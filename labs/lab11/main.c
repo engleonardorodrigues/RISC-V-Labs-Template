@@ -21,7 +21,7 @@ int main(){
 
     int C [N][M];
      
-    matrix_mult(&A, &B, C);
+    matrix_mult((int*)A, (int*)B, (int*)C);
 
         // Matriz A
         printf("Matriz 1:\n");
