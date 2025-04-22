@@ -32,7 +32,7 @@ calc_matriz:
     add  t5, t3, t4   # soma t3 + t4 e guarda em a2
     
     sw   t5, 0(a2)    # salva o resultado da multiplicação em t5
-    
+
     addi t6, t6, 1    # avança o contador em um ciclo para ajustar endereço de a0
 
     addi a2, a2, 4    # avança o endereço de memória de a2   
@@ -46,7 +46,7 @@ calc_matriz:
 
 atualiza_a0:
     addi a0, a0, 4    # avança para próximo elemento da Matriz A
-    addi t6, t6, 0
+#    addi t6, t6, 0
     addi t6, t6, 1
     j    calc_matriz
 
