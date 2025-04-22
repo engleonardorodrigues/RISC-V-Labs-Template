@@ -41,7 +41,7 @@ calc_matriz:
     addi t0, t0, -1   # decrementa t0 = t0 - 1
 
     beqz  t6, atualiza_a0 
-    addi t6, t6, 1
+    addi t6, t6, -1
     j    calc_matriz
 
 atualiza_a0:
